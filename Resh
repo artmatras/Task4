@@ -76,8 +76,7 @@ int main()
 					E10 = E / 10;
 					if (E= 1)
 					{
-						E10 == 1;
-						sumE = sumN-sumN * E10;
+						sumE = sumN;
 						cout << "Частичная сумма ряда c точностью, большей в 10 раз, равна " << sumE << endl;
 					}
 					else
