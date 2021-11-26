@@ -1,0 +1,105 @@
+#include "stdio.h"
+#include <math.h>
+#include <iostream>
+const double PI = 3.141592653589793;
+using namespace std;
+
+int main()
+{
+	setlocale(0, "");
+	while (1)
+	{
+		double toch, x,sumN,posl,last,E,sumE,E10;
+		int m,n;
+		cout << "Выберите действие: 1-выполнение заданий 0-выход" << endl;
+		cin >> m;
+		if (m == 1)
+		{
+			cout << "Задание 1:"<<endl;
+			cout << "Введите значение аргумента(от -1 до 1)" << endl;
+			cin >> x;
+			if (x > 1 or x < -1)
+			{
+				cout << "Неверное значение аргумента" << endl;
+			}
+			else
+			{
+				cout << "Введите количество слагаемых" << endl;
+				cin >> n;
+				if (n == 0)
+				{
+					cout << "Все значения равны 0,погрешность равна 0" << endl;
+				}
+				if (n <1)
+				{
+					cout << "Неверное значение n" << endl;
+				}
+				else
+				{
+					toch = 1/atan(x);
+					cout << "Точное значение функции равно " << toch << endl;
+					posl = 0;
+					for (int i = 1; i <= n; i++)
+					{
+						posl += pow(-1, i)*pow(x,(2*i-1)) / (2 * i - 1);
+						last = pow(-1, i) * pow(x, (2 * i - 1)) / (2 * i - 1);
+					}
+					sumN = (PI / 2) + posl;
+					cout << "Частичная сумма ряда равна " << sumN << endl;
+					double pogr;
+					pogr = toch - sumN;
+					cout << "Абсолютная погрешность равна " << pogr << endl;
+					cout << "Последнее слагаемое равно " << last << endl;
+				}
+			}
+			cout << "Задание 2:" << endl;
+			cout << "Введите значение аргумента(от -1 до 1)" << endl;
+			cin >> x;
+			if (x > 1 or x < -1)
+			{
+				cout << "Неверное значение аргумента" << endl;
+			}
+			else
+			{
+				cout << "Задайте точность вычислений > ";
+				cin >> E;
+				if (E < 0 && E>1)
+				{
+					cout<<"Неверное значение точности"<<endl;
+				}
+				else
+				{
+					sumE = sumN * E;
+					cout << "Точное значение функции равно " << toch << endl;
+					cout << "Частичная сумма ряда c заданной точностью равна " << sumE << endl;
+					cout << "Учтено " << n << " членов ряда" << endl;
+					E10 = E / 10;
+					if (E10 > 1)
+					{
+						E10 == 1;
+						sumE = sumN-sumN * E10;
+						cout << "Частичная сумма ряда c точностью, большей в 10 раз, равна " << sumE << endl;
+					}
+					else
+					{
+						sumE = sumN-sumN * E10;
+						cout << "Частичная сумма ряда c точностью, большей в 10 раз, равна " << sumE << endl;
+					}
+				}
+			}
+		}
+		if (m == 2)
+		{
+			return 1;
+		}
+		if (m == 0)
+		{
+			system("pause");
+			return 0;
+		}
+		if (m != 0 && m != 1 && m!= 2)
+		{
+			cout << "Неверная команда" << endl;
+		}
+	}
+}
